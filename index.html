@@ -165,15 +165,13 @@
             letter-spacing: 2px;
         }
         /* Grid reemplazado por Flexbox */
-               .birthday-grid {
+        .birthday-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: flex-start;
             align-items: flex-start;
-            
-          }
-        
-          .birthday-card {
+        }
+        .birthday-card {
             width: 22%;
             margin: 1.5%;
             background: linear-gradient(135deg, #C82330 0%, #a01e28 100%);
@@ -181,7 +179,7 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             padding: 20px;
             text-align: center;
-          }
+        }
         /* Ajustar tamaños dinámicamente según cantidad de tarjetas */
         .birthday-grid.few-cards .birthday-card {
             width: 25%; /* 4 columnas */
@@ -306,23 +304,15 @@
             color: #666;
             font-size: 0.9rem;
         }
-         @media (max-width: 1200px) {
-        .birthday-card {
-          width: 30%;
+        @media (max-width: 1200px) {
+            .birthday-card { width: 30%; }
         }
-      }
-    
-      @media (max-width: 800px) {
-        .birthday-card {
-          width: 45%;
+        @media (max-width: 800px) {
+            .birthday-card { width: 45%; }
         }
-      }
-    
-      @media (max-width: 500px) {
-        .birthday-card {
-          width: 100%;
+        @media (max-width: 500px) {
+            .birthday-card { width: 100%; }
         }
-      }
     </style>
 </head>
 <body>
@@ -333,65 +323,46 @@
             <text x="50" y="25" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="#6D6E71">docuprint</text>
         </svg>
     </div>
-    <!-- Animación de fondo -->
     <div class="background-animation">
-        <!-- Muñequitos animados -->
         <div class="character character-1">
             <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                <!-- Globo -->
                 <ellipse cx="25" cy="15" rx="8" ry="12" fill="#C82330"/>
                 <line x1="25" y1="27" x2="35" y2="45" stroke="#333" stroke-width="1"/>
-                <!-- Cuerpo -->
                 <circle cx="35" cy="50" r="8" fill="#333"/>
                 <rect x="30" y="45" width="10" height="15" fill="#333"/>
-                <!-- Brazos -->
                 <rect x="25" y="50" width="8" height="3" fill="#C82330"/>
                 <rect x="37" y="50" width="8" height="3" fill="#C82330"/>
-                <!-- Piernas -->
                 <rect x="32" y="60" width="3" height="8" fill="#333"/>
                 <rect x="38" y="60" width="3" height="8" fill="#333"/>
-                <!-- Cabeza -->
                 <circle cx="35" cy="40" r="6" fill="#6D6E71"/>
             </svg>
         </div>
         <div class="character character-2">
             <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                <!-- Globo -->
                 <ellipse cx="45" cy="12" rx="8" ry="12" fill="#6D6E71"/>
                 <line x1="45" y1="24" x2="35" y2="42" stroke="#333" stroke-width="1"/>
-                <!-- Vestido -->
                 <polygon points="35,45 25,60 45,60" fill="#C82330"/>
-                <!-- Brazos -->
                 <rect x="20" y="50" width="8" height="3" fill="#C82330"/>
                 <rect x="42" y="50" width="8" height="3" fill="#C82330"/>
-                <!-- Piernas -->
                 <rect x="28" y="60" width="3" height="8" fill="#333"/>
                 <rect x="39" y="60" width="3" height="8" fill="#333"/>
-                <!-- Cabeza -->
                 <circle cx="35" cy="40" r="6" fill="#6D6E71"/>
-                <!-- Cabello -->
                 <path d="M29,35 Q35,30 41,35" fill="#333"/>
             </svg>
         </div>
         <div class="character character-3">
             <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                <!-- Globo -->
                 <ellipse cx="55" cy="18" rx="8" ry="12" fill="#C82330"/>
                 <line x1="55" y1="30" x2="35" y2="45" stroke="#333" stroke-width="1"/>
-                <!-- Cuerpo -->
                 <circle cx="35" cy="50" r="8" fill="#333"/>
                 <rect x="30" y="45" width="10" height="15" fill="#333"/>
-                <!-- Brazos -->
                 <rect x="25" y="50" width="8" height="3" fill="#6D6E71"/>
                 <rect x="37" y="50" width="8" height="3" fill="#6D6E71"/>
-                <!-- Piernas -->
                 <rect x="32" y="60" width="3" height="8" fill="#333"/>
                 <rect x="38" y="60" width="3" height="8" fill="#333"/>
-                <!-- Cabeza -->
                 <circle cx="35" cy="40" r="6" fill="#6D6E71"/>
             </svg>
         </div>
-        <!-- Globos flotantes -->
         <div class="balloon balloon-1"></div>
         <div class="balloon balloon-2"></div>
         <div class="balloon balloon-3"></div>
@@ -411,20 +382,17 @@
             🎂 Cargando cumpleaños desde Google Sheets...
         </div>
         <div class="birthday-grid" id="birthdayGrid">
-            <!-- Las tarjetas se generarán automáticamente -->
+            </div>
+        <div class="update-info" style="margin-top: 20px;">
+           <p><small>Última verificación: <span id="lastUpdate">--</span></small></p>
         </div>
-       <!--  <div class="update-info">
-            <h3>📊 Datos actualizados automáticamente</h3>
-            <p>Los cumpleaños se cargan directamente desde Google Sheets de Docuprint.<br>
-            Última actualización: <span id="lastUpdate">--</span></p>
-        </div>-->
     </div>
     <div class="confetti-container" id="confettiContainer"></div>
     <script>
         // Configuración
-        const BASE_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSuBkO8UfbQoz90Z0os4Wult6mAz_GEzhEHpZuuyb7_-72fw0kowQ8-JYhCC0AzjyOtvlZGtgLj3Dvl/pub?gid=1759459475&single=true&output=csv';
-        const PROXY_URL = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(BASE_URL);
-        const SHEET_URL = PROXY_URL;
+        // Nota: Quitamos la URL estática del Proxy aquí para construirla dinámicamente
+        const GOOGLE_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSuBkO8UfbQoz90Z0os4Wult6mAz_GEzhEHpZuuyb7_-72fw0kowQ8-JYhCC0AzjyOtvlZGtgLj3Dvl/pub?gid=1759459475&single=true&output=csv';
+        
         const months = [
             'ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO',
             'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'
@@ -506,7 +474,6 @@
                     timestamp: new Date().getTime()
                 };
                 localStorage.setItem('birthdayData', JSON.stringify(dataToSave));
-                console.log('Datos guardados en localStorage');
             } catch (e) {
                 console.warn('No se pudo guardar en localStorage:', e);
             }
@@ -518,7 +485,7 @@
                 const saved = localStorage.getItem('birthdayData');
                 if (saved) {
                     const parsed = JSON.parse(saved);
-                    console.log('Datos cargados desde localStorage (última actualización:', new Date(parsed.timestamp).toLocaleString(), ')');
+                    console.log('Datos cargados desde localStorage');
                     return parsed.data;
                 }
             } catch (e) {
@@ -527,12 +494,22 @@
             return null;
         }
 
-        // --- CARGAR desde Google Sheets ---
+        // --- CARGAR desde Google Sheets (MODIFICADO: Cache Busting) ---
         function loadBirthdayData() {
             return new Promise(function(resolve, reject) {
-                console.log('Cargando datos desde Google Sheets...');
+                console.log('Iniciando carga de datos...');
+                
+                // 1. Generamos un timestamp único
+                const timestamp = new Date().getTime();
+                
+                // 2. Agregamos el timestamp a la URL de Google para que sea única
+                const uniqueGoogleUrl = GOOGLE_CSV_URL + '&cacheBuster=' + timestamp;
+                
+                // 3. Pasamos esa URL única al proxy
+                const finalUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(uniqueGoogleUrl);
+
                 const xhr = new XMLHttpRequest();
-                xhr.open('GET', SHEET_URL, true);
+                xhr.open('GET', finalUrl, true);
                 xhr.onload = function() {
                     if (xhr.status >= 200 && xhr.status < 400) {
                         try {
@@ -560,20 +537,18 @@
                                     }
                                 }
                             }
-                            console.log('Datos procesados:', data.length, 'cumpleaños encontrados');
-                            saveToLocalStorage(data); // Guardar para offline
+                            console.log('Datos actualizados descargados:', data.length);
+                            saveToLocalStorage(data);
                             resolve(data);
                         } catch (e) {
                             console.error('Error parseando CSV:', e);
                             reject(e);
                         }
                     } else {
-                        console.error('Error de red o servidor:', xhr.status);
-                        reject(new Error('Error de red'));
+                        reject(new Error('Error de red: ' + xhr.status));
                     }
                 };
                 xhr.onerror = function() {
-                    console.error('Error de red con XMLHttpRequest.');
                     reject(new Error('Error de red'));
                 };
                 xhr.send();
@@ -599,12 +574,11 @@
                 return;
             }
 
-            // Aplicar clase para 4 o 5 columnas
             grid.className = 'birthday-grid';
             if (monthBirthdays.length >= 13) {
-                grid.classList.add('many-cards'); // 5 columnas
+                grid.classList.add('many-cards');
             } else {
-                grid.classList.add('few-cards'); // 4 columnas
+                grid.classList.add('few-cards');
             }
 
             grid.innerHTML = '';
@@ -665,64 +639,48 @@
                 const newMonthData = newData.filter(p => p.month === currentMonth.number).sort((a, b) => a.day - b.day);
                 const currentDOMData = getCurrentDOMData();
 
+                // Comparamos los datos filtrados por mes, no todo el dataset
                 if (!isEqualData(newMonthData, currentDOMData)) {
-                    console.log('Cambios detectados. Actualizando UI...');
+                    console.log('¡Cambios detectados! Actualizando pantalla...');
                     birthdayData = newData;
                     renderBirthdays();
                 } else {
-                    console.log('Sin cambios. Manteniendo UI.');
+                    console.log('Sin cambios nuevos.');
                     document.getElementById('lastUpdate').textContent = new Date().toLocaleString('es-AR');
                 }
             } catch (error) {
-                console.warn('Sin conexión. Usando datos locales.');
+                console.warn('Fallo en actualización de fondo (posiblemente sin internet).');
             }
         }
 
         // --- INICIALIZACIÓN ---
         async function initialize() {
             const loading = document.getElementById('loading');
-            const currentMonth = getCurrentMonth();
-
-            // 1. Intentar cargar desde localStorage
+            
+            // 1. Mostrar caché primero para velocidad
             const cachedData = loadFromLocalStorage();
             if (cachedData) {
                 birthdayData = cachedData;
-                console.log('Usando datos almacenados para mostrar al inicio');
+                console.log('Mostrando caché inicial...');
                 renderBirthdays();
             } else {
-                console.log('No hay datos en caché. Cargando...');
-                loading.textContent = 'No hay datos locales. Conectando...';
+                loading.textContent = 'Conectando con Google Sheets...';
             }
 
-            // 2. Intentar cargar desde Google Sheets
+            // 2. Buscar datos frescos inmediatamente
             try {
                 const freshData = await loadBirthdayData();
                 birthdayData = freshData;
                 renderBirthdays();
             } catch (error) {
                 if (birthdayData.length === 0) {
-                    // Ni caché ni conexión: mostrar error
-                    loading.innerHTML = `
-                        <div class="error">
-                            ⚠️ Sin conexión y sin datos locales<br>
-                            <small>Verifica tu conexión a internet.</small>
-                        </div>
-                    `;
-                } else {
-                    // Ya se mostraron datos locales, solo notificar
-                    loading.style.display = 'none';
-                    document.getElementById('lastUpdate').textContent = 'Offline - Datos locales';
+                    loading.innerHTML = `<div class="error">⚠️ Error de conexión. Verifica internet.</div>`;
                 }
             }
 
-            // 3. Configurar actualización cada 30 segundos
+            // 3. Configurar actualización automática cada 30 segundos
             clearInterval(updateInterval);
-            updateInterval = setInterval(updateDataInBackground, 30000)
-
-            // 4. Actualizar timestamp inicial si ya se renderizó
-            if (birthdayData.length > 0 && !document.getElementById('lastUpdate').textContent.includes('Offline')) {
-                document.getElementById('lastUpdate').textContent = new Date().toLocaleString('es-AR');
-            }
+            updateInterval = setInterval(updateDataInBackground, 30000);
         }
 
         // --- LIMPIEZA ---
